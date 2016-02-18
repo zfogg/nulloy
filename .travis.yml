@@ -17,3 +17,5 @@ addons:
   coverity_scan:
     project:
       name: nulloy/nulloy
+    build_command_prepend: ./configure --taglib
+    build_command: make -j`grep processor /proc/cpuinfo | wc -l`
