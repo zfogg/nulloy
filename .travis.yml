@@ -12,3 +12,8 @@ install:
 script:
   - ./configure --taglib
   - make -j`grep processor /proc/cpuinfo | wc -l`
+  
+addons:
+  coverity_scan:
+    project:
+      name: nulloy/nulloy
