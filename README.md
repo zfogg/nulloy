@@ -1,6 +1,7 @@
 # Nulloy Music Player http://nulloy.com
 
 [![Build Status](https://travis-ci.org/nulloy/nulloy.svg)](https://travis-ci.org/nulloy/nulloy)
+[![Coverity Scan Build Status](https://scan.coverity.com/projects/7984/badge.svg)](https://scan.coverity.com/projects/nulloy-nulloy)
 
 **Testing PPA:** [ppa:nulloy/testing](https://launchpad.net/~nulloy/+archive/ubuntu/testing)
 
