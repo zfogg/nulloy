@@ -13,9 +13,14 @@ script:
   - ./configure --taglib
   - make -j`grep processor /proc/cpuinfo | wc -l`
   
+env:
+  global:
+    - secure: "FD0r87T2UuDdjEESmzSluXYVT3HOB++ABOYtl7iGs+rXbyCrYAfsL4mpy43cwsbYnVWiaYTF+fUmbJwMlMZZn9TQuIhX4Lqx1qsd+dvfJKamCamYu5R8NXclwpZuopZuLtFb01m94HD59m+iJyy6ZfEnTBjiOAe3l79rbGzyesQ="
 addons:
   coverity_scan:
     project:
-      name: nulloy/nulloy
-    build_command_prepend: ./configure --taglib
-    build_command: make -j`grep processor /proc/cpuinfo | wc -l`
+      name: "nulloy/nulloy"
+    notification_email: sergey@vlasov.me
+    build_command_prepend: "./configure --taglib"
+    build_command: "make -j`grep processor /proc/cpuinfo | wc -l`"
+    branch_pattern: coverity_scan
