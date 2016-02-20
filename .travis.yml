@@ -1,6 +1,6 @@
 env:
   global:
-    - secure: "FD0r87T2UuDdjEESmzSluXYVT3HOB++ABOYtl7iGs+rXbyCrYAfsL4mpy43cwsbYnVWiaYTF+fUmbJwMlMZZn9TQuIhX4Lqx1qsd+dvfJKamCamYu5R8NXclwpZuopZuLtFb01m94HD59m+iJyy6ZfEnTBjiOAe3l79rbGzyesQ="
+    - secure: "KsKPPU4TwOYB59HsvlRswBgvwENNC4xDjpQQHTKbgdcci+ESBtrVQ2PA8fvExqwQNedXGeWQOhYGekTYzNESS1yjYWHQ4N88wL76WuWj+1KHSLK+/JoVfqw93kdCazTjbDHhLK9ZFHf8MDO0KGbdRguSw8hdeGrsfjBLej8SZsQ="
 
 language: cpp
 
