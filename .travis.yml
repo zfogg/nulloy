@@ -20,6 +20,7 @@ addons:
   coverity_scan:
     project:
       name: "nulloy/nulloy"
+      description: "Build submitted via Travis CI"
     notification_email: sergey@vlasov.me
     build_command_prepend: "./configure --taglib"
     build_command: "make -j`grep processor /proc/cpuinfo | wc -l`"
