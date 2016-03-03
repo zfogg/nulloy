@@ -7,22 +7,29 @@ language: cpp
 compiler:
   - clang
   - gcc
-
-install:
-  - sudo add-apt-repository ppa:gstreamer-developers/ppa -y
-  - sudo apt-get update
-  - sudo apt-get install libqt4-dev qt4-qmake libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev zip libx11-dev libtag1-dev
+  
+sudo: required
+dist: trusty
 
 script:
   - ./configure --taglib
   - make -j`grep processor /proc/cpuinfo | wc -l`
   
 addons:
+  apt:
+    packages:
+    - libqt4-dev
+    - qt4-qmake
+    - libgstreamer1.0-dev
+    - libgstreamer-plugins-base1.0-dev
+    - zip
+    - libx11-dev
+    - libtag1-dev
   coverity_scan:
     project:
       name: "nulloy/nulloy"
       description: "Build submitted via Travis CI"
     notification_email: sergey@vlasov.me
-    build_command_prepend: "./configure --taglib"
+    build_command_prepend: "./configure --taglib --no-gstreamer"
     build_command: "make -j`grep processor /proc/cpuinfo | wc -l`"
     branch_pattern: coverity_scan
