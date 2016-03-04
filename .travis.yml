@@ -3,6 +3,8 @@ language: cpp
 compiler:
   - clang
   - gcc
+  
+  kyeTyRtwgMLplCm2UE3iq2CHOvwcP4vkG
 
 install:
   - sudo add-apt-repository ppa:gstreamer-developers/ppa -y
@@ -19,7 +21,7 @@ before_script:
   - fluxbox &
 
 script:
-  - ./configure --taglib --tests
+  - CXXFLAGS="--coverage -g -O0" LDFLAGS="-lgcov --coverage" ./configure --taglib --tests
   - make -j`grep processor /proc/cpuinfo | wc -l`
   - ./test
   
