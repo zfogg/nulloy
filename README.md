@@ -1,6 +1,7 @@
 # ![Icon](https://github.com/nulloy/nulloy.github.io/blob/master/files/github-icon.png) Nulloy Music Player http://nulloy.com
 
 [![Build Status](https://travis-ci.org/nulloy/nulloy.svg)](https://travis-ci.org/nulloy/nulloy)
+[![Coverage Status](https://coveralls.io/repos/github/nulloy/nulloy/badge.svg?branch=coveralls)](https://coveralls.io/github/nulloy/nulloy?branch=coveralls)
 
 **Testing PPA:** [ppa:nulloy/testing](https://launchpad.net/~nulloy/+archive/ubuntu/testing)
 
