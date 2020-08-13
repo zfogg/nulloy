@@ -119,6 +119,17 @@ echo "LRELEASE = $LRELEASE" >> $QMAKE_CACHE
 check_executable PKG_CONFIG pkg-config
 echo "PKG_CONFIG = $PKG_CONFIG" >> $QMAKE_CACHE
 
+if uname | grep -i darwin; then
+    macos_cxx_std='-stdlib=libc++'
+    if [[ $CXXFLAGS != *"$macos_cxx_std"* ]]; then
+        CXXFLAGS="$CXXFLAGS $macos_cxx_std"
+    fi
+    #macos_cxx_stdlib='-std=libc++'
+    #if [[ $CXXFLAGS != *"$macos_cxx_stdlib"* ]]; then
+        #CXXFLAGS="$CXXFLAGS $macos_cxx_stdlib"
+    #fi
+fi
+
 [[ -n "$CFLAGS" ]]   && echo "QMAKE_CFLAGS += ${CFLAGS}"     >> $QMAKE_CACHE
 [[ -n "$CXXFLAGS" ]] && echo "QMAKE_CXXFLAGS += ${CXXFLAGS}" >> $QMAKE_CACHE
 [[ -n "$LDFLAGS" ]]  && echo "QMAKE_LFLAGS += ${LDFLAGS}"    >> $QMAKE_CACHE
@@ -131,6 +142,7 @@ pkg_check_lib() {
         exit 1
     fi
 }
+
 [[ $BUILD_GSTREAMER == "yes" ]]           && pkg_check_lib gstreamer-1.0
 [[ $BUILD_GSTREAMER_TAGREADER == "yes" ]] && pkg_check_lib gstreamer-pbutils-1.0
 [[ $BUILD_VLC == "yes" ]]                 && pkg_check_lib libvlc
@@ -157,7 +169,6 @@ if $QMAKE -query "QMAKE_MKSPECS" | grep -i mingw; then
     echo "CONFIG += unix_mingw" >> $QMAKE_CACHE
     APP_NAME=Nulloy
 fi
-echo "APP_NAME = $APP_NAME" >> $QMAKE_CACHE
 
 echo
 if [[ $FORCE_VERSION != "no" ]]; then
@@ -167,12 +178,20 @@ fi
 
 if uname | grep -i darwin; then
     QMAKE_EXTRA_OPTIONS="-spec macx-g++"
+    APP_NAME=Nulloy
+    QMAKE_CC=clang
+    QMAKE_CXX=clang++
+    echo "QMAKE_CC  = $QMAKE_CC" >> $QMAKE_CACHE
+    echo "QMAKE_CXX = $QMAKE_CXX" >> $QMAKE_CACHE
+    echo "QMAKE_EXTRA_OPTIONS = $QMAKE_EXTRA_OPTIONS" >> $QMAKE_CACHE
 else
     echo "Install prefix: $PREFIX"
 fi
 echo "PREFIX = $PREFIX" >> $QMAKE_CACHE
 
 echo "N_CONFIG_SUCCESS = yes" >> $QMAKE_CACHE
+
+echo "APP_NAME = $APP_NAME" >> $QMAKE_CACHE
 
 echo
 echo "Running qmake..."

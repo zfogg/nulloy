@@ -3,4 +3,9 @@ Makefile*
 *.a
 *.so
 qrc_*.cpp
+moc_*.cpp
 ui_*.h
+*.o
+*.app
+/i18n
+/skins

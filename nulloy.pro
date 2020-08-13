@@ -5,6 +5,20 @@ isEmpty(N_CONFIG_SUCCESS) {
     error(Please run `configure\')
 }
 
+# INFO: https://stackoverflow.com/a/51602580
+unix {
+    CONFIG += link_pkgconfig
+    PKGCONFIG += QtCLucene
+    PKGCONFIG += QtUiTools
+}
+macx {
+    # Enable pkg-config (pkg-config is disabled by default in the Qt package for mac)
+    QT_CONFIG -= no-pkg-config
+    # pkg-config location if your brew installation is standard
+    PKG_CONFIG = /usr/local/bin/pkg-config
+    QMAKE_MAC_SDK = macosx11.0
+}
+
 # qmake -config no-skins
 !no-skins {
     widgets.subdir = src/widgetCollection
